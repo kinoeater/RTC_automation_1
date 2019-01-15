@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>TestNG:  S4B Cucumber Tests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>S4B Cucumber Tests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>7/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Fri Dec 28 14:51:35 EET 2018</td>
+</tr>
+<tr><td>Total time:</td><td>663 seconds (663650 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='runners.Basic_Call_Test.feature()'><b>feature</b><br>Test class: runners.Basic_Call_Test<br>Test method: Runs Cucumber Feature<br>Parameters: Verify that User A and User B logs in and make a call.<br/>
+<a href="#Output-1277716905" onClick='toggleBox("Output-1277716905", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1277716905" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1277716905">
+Exiting the Application A!<br/>
+Exiting the Application B!<br/>
+</div>
+</td>
+<td></td>
+<td>87</td>
+<td>runners.Basic_Call_Test@617faa95</td></tr>
+<tr>
+<td title='runners.Hold_Unhold_Test.feature()'><b>feature</b><br>Test class: runners.Hold_Unhold_Test<br>Test method: Runs Cucumber Feature<br>Parameters: Verify that User A and User B logs in and make a call, then hold-unhold the call.<br/>
+<a href="#Output-1985280051" onClick='toggleBox("Output-1985280051", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1985280051" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1985280051">
+Exiting the Application A!<br/>
+Exiting the Application B!<br/>
+</div>
+</td>
+<td></td>
+<td>105</td>
+<td>runners.Hold_Unhold_Test@1e127982</td></tr>
+<tr>
+<td title='runners.Screen_Share_Test.feature()'><b>feature</b><br>Test class: runners.Screen_Share_Test<br>Test method: Runs Cucumber Feature<br>Parameters: Verify that User A and User B logs in and make a call, then screen can be shared.<br/>
+<a href="#Output-1877317084" onClick='toggleBox("Output-1877317084", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1877317084" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1877317084">
+Exiting the Application A!<br/>
+Exiting the Application B!<br/>
+</div>
+</td>
+<td></td>
+<td>104</td>
+<td>runners.Screen_Share_Test@60c6f5b</td></tr>
+<tr>
+<td title='runners.Search_View_details_Add_Remove_Contact_Test.feature()'><b>feature</b><br>Test class: runners.Search_View_details_Add_Remove_Contact_Test<br>Test method: Runs Cucumber Feature<br>Parameters: Verify User A can search and view the details of a contact.<br/>
+<a href="#Output-1519927539" onClick='toggleBox("Output-1519927539", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1519927539" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1519927539">
+Exiting the Application A!<br/>
+</div>
+</td>
+<td></td>
+<td>54</td>
+<td>runners.Search_View_details_Add_Remove_Contact_Test@2038ae61</td></tr>
+<tr>
+<td title='runners.Camera_On_Off_Test.feature()'><b>feature</b><br>Test class: runners.Camera_On_Off_Test<br>Test method: Runs Cucumber Feature<br>Parameters: Verify that User can stop and start the video successfully<br/>
+<a href="#Output-1635975151" onClick='toggleBox("Output-1635975151", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1635975151" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1635975151">
+Exiting the Application A!<br/>
+Exiting the Application B!<br/>
+</div>
+</td>
+<td></td>
+<td>99</td>
+<td>runners.Camera_On_Off_Test@3c0f93f1</td></tr>
+<tr>
+<td title='runners.Mute_Unmute_Test.feature()'><b>feature</b><br>Test class: runners.Mute_Unmute_Test<br>Test method: Runs Cucumber Feature<br>Parameters: Verify that User A and User B logs in and make a call, then mute-unmute the call.<br/>
+<a href="#Output-757271807" onClick='toggleBox("Output-757271807", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-757271807" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-757271807">
+Exiting the Application A!<br/>
+Exiting the Application B!<br/>
+</div>
+</td>
+<td></td>
+<td>109</td>
+<td>runners.Mute_Unmute_Test@31dc339b</td></tr>
+<tr>
+<td title='runners.Send_Receive_Message_Test.feature()'><b>feature</b><br>Test class: runners.Send_Receive_Message_Test<br>Test method: Runs Cucumber Feature<br>Parameters: Verify that User A sends Message to User B, and User B receives it.<br/>
+<a href="#Output-1719521616" onClick='toggleBox("Output-1719521616", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1719521616" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1719521616">
+Exiting the Application A!<br/>
+Exiting the Application B!<br/>
+</div>
+</td>
+<td></td>
+<td>102</td>
+<td>runners.Send_Receive_Message_Test@544fe44c</td></tr>
+</table><p>
+</body>
+</html>

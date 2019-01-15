@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="S4BDesktop" verbose="2">
+	<test name="S4B Cucumber Tests">
+		<classes>
+	  	<class name="runners.Basic_Call_Test"></class>    
+	 	<class name="runners.Hold_Unhold_Test"></class>  
+	  	<class name="runners.Screen_Share_Test"></class>  
+	  	<class name="runners.Search_View_details_Add_Remove_Contact_Test"></class>  
+	  	<class name="runners.Camera_On_Off_Test"></class>   
+		<class name="runners.Mute_Unmute_Test"></class>   
+	 	<class name="runners.Send_Receive_Message_Test"></class>   
+							
+		</classes>
+	</test>
+</suite>
