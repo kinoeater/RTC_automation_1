@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="runners.Settings_Page_Test">
+      <class name="runners.Call_Transfer_Actions_Test">
         <methods>
           <include name="setUpClass"/>
           <include name="feature" invocation-numbers="0"/>
           <include name="tearDownClass"/>
         </methods>
-      </class> <!-- runners.Settings_Page_Test -->
+      </class> <!-- runners.Call_Transfer_Actions_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

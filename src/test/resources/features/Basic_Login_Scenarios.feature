@@ -1,3 +1,4 @@
+@desktop
 Feature: Login & Logout scenarios with kandy and skype users.
 	User should be able to login with correct credentials
 	User should be warned if enters incorrect credentals.

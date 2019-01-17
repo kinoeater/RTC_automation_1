@@ -1,3 +1,4 @@
+@desktop
 Feature: Verify that User A and B can perform basic call and mid-call actions.	
 
 	        @UserA @UserB	

@@ -4,7 +4,6 @@
     
     {
       "browserName": "chrome",
-	"applicationName":"NodeA",
 	"maxInstances": 5,
       "seleniumProtocol": "WebDriver"          }
   ],

@@ -1,27 +1,44 @@
-@desktop
-Feature: Verify User A can search and view the details of a contact.
-
-  Scenario: View the details of a contact
-    Given UserB logs into kandy with "011902165225323@172.28.247.41" "muratc" "3456"
-      And UserB logs into skype with "muratc@gbsolutions.work" "Lkjh1234"
-     When UserB clicks "contacts.credentialssaveno"
+Feature: Verify that User A, B nd C can perform transfer
+   
+     @UserA @UserB @UserC	
+Scenario: Consultative Transfer Call (Transferor UserA , Transfer Target UserB , Transferee UserC)
+      Given UserA can see "Calls" on "calls.tab.text" location
+      And UserA clicks "calls.tab"
+    Given UserB can see "Calls" on "calls.tab.text" location
+    Given UserC can see "Calls" on "calls.tab.text" location
+      And UserB clicks "calls.tab"
+      And UserC clicks "calls.tab"
+      And UserA clicks "calls.dialbutton"
+      And UserA clicks "calls.dialpadinput"
+      And UserA waits for "2000" seconds
+      And UserA enters "011902165225323@172.28.247.41" to "calls.dialpadinput"
+      And UserA waits for "3000" seconds
+      And UserA clicks "calls.dialpadcall.button"
       And UserB waits for "3000" seconds
-      And UserB clicks "contacts.search.button"
-      And UserB enters "Semra Boyaci" to "contacts.search.input"
-      And UserB waits for "3000" seconds
-      And UserB right clicks on "Contact.Semra.Boyaci" 
-      And UserB clicks "contact.view.contact.info" 
-      And UserB waits for "2000" seconds
-      And UserB can see "close" on "contact.details.right.panel.close.button.text.area" location
-      And UserB clicks "contact.details.right.panel.close.button"
-      And UserB right clicks on "Contact.Semra.Boyaci" 
-      And UserB waits for "2000" seconds
-      And UserB clicks "contact.add.contact" 
-      And UserB waits for "2000" seconds
-      And UserB clicks "contacts.search.close.button"
-      And UserB waits for "2000" seconds
-      And UserB right clicks on "Contact.Semra.Boyaci" 
-      And UserB waits for "2000" seconds
-      And UserB clicks "contact.remove.contact"
+      And UserB clicks "calls.answer.button"
+      And UserA waits for "5000" seconds
+      And UserA clicks "calls.fullscreen.exit.button"
+      And UserA waits for "1000" seconds
+      And UserA clicks "calls.dialbutton"
+      And UserA clicks "calls.dialpadinput" 
+      And UserA waits for "1000" seconds
+      And UserA enters "011902165225287@172.28.247.41" to "calls.dialpadinput"
+      And UserA waits for "3000" seconds
+      And UserA clicks "calls.dialpadcall.button"
+      And UserC waits for "3000" seconds
+      And UserC clicks "calls.answer.button"
+      And UserA waits for "5000" seconds
+      And UserA clicks "calls.actions.transfer.button"
+      And UserA waits for "2000" seconds
+      And UserA clicks "calls.actions.transfer.transfercall.button"
+      And UserA waits for "2000" seconds
+      And UserA clicks "calls.actions.transfer.consultavive.UserC.number"
+      And UserA waits for "10000" seconds
+      And UserB clicks "calls.callendbutton"
       
+      
+      
+      
+      
+  
       

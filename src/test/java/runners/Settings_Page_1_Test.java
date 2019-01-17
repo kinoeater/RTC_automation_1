@@ -11,17 +11,12 @@ import java.io.File;
 
 
 @CucumberOptions(
-        features = {"src/test/resources/features/Basic_Login_Scenarios.feature","src/test/resources/features/Call_Mid_Call_Actions.feature",
-        		"src/test/resources/features/Contact_Related_Scenarios.feature","src/test/resources/features/Call_Transfer_Actions.feature",
-        		"src/test/resources/features/Send_Receive_1-1_Message.feature","src/test/resources/features/Settings.Page.feature"
-        },
-        
-        	
+        features = {"src/test/resources/features/Settings.Page.feature"},
         glue = {"stepdefinitions", "utility"},
         plugin = {"pretty", "html:target/cucumber-reports","com.cucumber.listener.ExtentCucumberFormatter:"},
-        tags = {}
+        tags = {"@desktop","@UserA"}
         )
-public class Test_report_Test extends AbstractTestNGCucumberTests {
+public class Settings_Page_1_Test extends AbstractTestNGCucumberTests {
 
 
     @BeforeClass

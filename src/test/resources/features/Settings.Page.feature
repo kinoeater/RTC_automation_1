@@ -30,8 +30,10 @@ Feature: Verify User A can checks the buttons in the settings page
       And UserA waits for "2000" seconds
       And UserA clicks "settings.ews.cancel"
       And UserA waits for "2000" seconds
+      And UserA test method
       And UserA clicks "settings.microphone1"
       And UserA waits for "3000" seconds
       And UserA clicks "Internal.Microphone"
+      And UserA exits client 
    
   

@@ -115,8 +115,8 @@ public class mystepdefinitions_A extends HookA {
     
 	   @Given("^UserA test method$")
 	    public void usera_test_method() throws Throwable {
-		   
-	   
+		String miclabel =  Adriver.findElement(By.xpath("//label[@for='audio-video-microphone']")).getText();
+	    System.out.println(miclabel);
 	    }
 	   
 	   
