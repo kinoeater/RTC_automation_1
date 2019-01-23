@@ -115,8 +115,11 @@ public class mystepdefinitions_A extends HookA {
     
 	   @Given("^UserA test method$")
 	    public void usera_test_method() throws Throwable {
-		String miclabel =  Adriver.findElement(By.xpath("//label[@for='audio-video-microphone']")).getText();
-	    System.out.println(miclabel);
+	
+		  int video= Adriver.findElements(By.xpath("/*[starts-with(@id,'video-stream-id')]")).size();
+		  System.out.println("Video varsa burası en az 1 olmalı = "+video);
+		  
+		   
 	    }
 	   
 	   
@@ -137,7 +140,7 @@ public class mystepdefinitions_A extends HookA {
 			k.iterator().next().click();
 			Thread.sleep(5000);
 			
-			// ******Method to checek if the received message is same as "strArg1" ********************	
+			// ******Method to check if the received message is same as "strArg1" ********************	
 	    	
 	    	List<WebElement> d= Adriver.findElements(By.xpath("//*[@class='text-message']/div[1]"));
 	    	int y=d.size();

@@ -1,0 +1,5884 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='UTF-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>SO Reports - v1.0.0</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow bdd-report'>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1)" view='testrunner-logs-view'><i class='material-icons'>note</i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>S4B Web RTC Reports</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Jan 22, 2019 10:01:50 AM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.2</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+						<li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>local_offer</i> Category
+				</a>
+				<ul id='category-toggle' class='dropdown-content'>
+					<li><a href='#'>@desktop</a></li>
+					<li><a href='#'>@UserA</a></li>
+					<li><a href='#'>@UserB</a></li>
+					<li><a href='#'>@UserC</a></li>
+					<li class='divider'></li>
+					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
+				</ul>
+			</div>
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m4 l4 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Features</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='66.667%'><span class='strong'>4</span> feature(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='33.333%'>2</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m4 l4 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Scenarios</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='91.304%'><span class='strong'>21</span> scenario(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='8.696%'>2</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m4 l4 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='grandchild-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='99.455%'><span class='strong'>547</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0.364%'>2</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0.182%'>1</span> others
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Features</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>Login & Logout scenarios with kandy and skype users.</span>
+						<span class='test-time'>Jan 22, 2019 10:01:50 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='scenario node' test-id='2' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+	</div>
+	<span class='duration right label'>0h 0m 39s+439ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Login: Use correct kandy and skype credentials</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='3' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA enters "011902165222512@172.28.247.41" to "login.kandyusername"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='4' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "myol007" to "login.kandyauthname"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='5' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "3456" to "login.kandypassword"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='6' class='node when pass' status='pass'>
+			
+			<b>When</b>
+			
+			<span class="bdd-step-name">When UserA clicks "login.kandysubmit"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='7' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "myol@gbsolutions.work" to "login.skypeusername"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='8' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "Lkjh1234" to "login.skypepassword"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='9' class='node when pass' status='pass'>
+			
+			<b>When</b>
+			
+			<span class="bdd-step-name">When UserA clicks "login.skypesubmit"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='10' class='node when pass' status='pass'>
+			
+			<b>When</b>
+			
+			<span class="bdd-step-name">When UserA clicks "contacts.credentialssaveno"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='11' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='12' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='13' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='14' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='15' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.logout.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='16' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.popuplogout"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='17' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='18' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='19' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+	</div>
+	<span class='duration right label'>0h 0m 26s+807ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Login: Use S4B with only kandy, use correct credentials</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='20' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA enters "011902165222512@172.28.247.41" to "login.kandyusername"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='21' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "myol007" to "login.kandyauthname"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='22' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "3456" to "login.kandypassword"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='23' class='node when pass' status='pass'>
+			
+			<b>When</b>
+			
+			<span class="bdd-step-name">When UserA clicks "login.kandysubmit"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='24' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "login.skypeskip"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='25' class='node when pass' status='pass'>
+			
+			<b>When</b>
+			
+			<span class="bdd-step-name">When UserA clicks "contacts.credentialssaveno"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='26' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='27' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='28' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='29' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='30' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.logout.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='31' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.popuplogout"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='32' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='33' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='34' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+	</div>
+	<span class='duration right label'>0h 0m 40s+297ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Login: Use incorrect kandy credentials</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='35' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA enters "incorrect@incorrect" to "login.kandyusername"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='36' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "myol007" to "login.kandyauthname"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='37' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "3456" to "login.kandypassword"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='38' class='node when pass' status='pass'>
+			
+			<b>When</b>
+			
+			<span class="bdd-step-name">When UserA clicks "login.kandysubmit"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='39' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='40' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then UserA can see "Incorrect username or password. Please try again." on "kandy.incorrect.login.warning" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='41' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='42' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='43' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+	</div>
+	<span class='duration right label'>0h 0m 23s+527ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Login: Use correct kandy and incorrect skype credentials</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='44' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Login" on "login.kandysubmit" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='45' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "011902165222512@172.28.247.41" to "login.kandyusername"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='46' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "myol007" to "login.kandyauthname"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='47' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "3456" to "login.kandypassword"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='48' class='node when pass' status='pass'>
+			
+			<b>When</b>
+			
+			<span class="bdd-step-name">When UserA clicks "login.kandysubmit"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='49' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "myol@gbsolutions.work" to "login.skypeusername"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='50' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "incorrect" to "login.skypepassword"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='51' class='node when pass' status='pass'>
+			
+			<b>When</b>
+			
+			<span class="bdd-step-name">When UserA clicks "login.skypesubmit"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='52' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then UserA can see "Restart" on "login.skype.incorrect.restart.button" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='53' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='54'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify that User A and B can perform basic call and mid-call actions.</span>
+						<span class='test-time'>Jan 22, 2019 10:04:00 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='scenario node' test-id='55' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 1m 22s+903ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Basic Call</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='56' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='57' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='58' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='59' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='60' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='61' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='62' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='63' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='64' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='65' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='66' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='67' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='68' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "6000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='69' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='70' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='71' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='72' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 0m 30s+132ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Mute-Unmute during a video call on term side</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='73' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='74' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='75' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='76' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='77' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='78' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='79' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='80' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='81' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='82' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='83' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='84' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='85' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='86' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "mic" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='87' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.microphone.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='88' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "7000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='89' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "mic_off" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='90' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.microphone.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='91' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='92' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "mic" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='93' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='94' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='95' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='96' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='97' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 0m 32s+720ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Mute-Unmute during a video call on orig side</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='98' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='99' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='100' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='101' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='102' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='103' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='104' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='105' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='106' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='107' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='108' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='109' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='110' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='111' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "mic" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='112' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.microphone.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='113' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "7000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='114' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "mic_off" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='115' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.microphone.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='116' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='117' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "mic" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='118' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='119' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='120' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='121' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='122' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 0m 55s+719ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Dual Mute-Unmute during a video call</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='123' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='124' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='125' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='126' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='127' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='128' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='129' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='130' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='131' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='132' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='133' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='134' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='135' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='136' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "mic" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='137' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.microphone.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='138' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "7000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='139' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "mic_off" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='140' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "5000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='141' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "mic" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='142' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.microphone.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='143' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "7000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='144' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "mic_off" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='145' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "5000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='146' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.microphone.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='147' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='148' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "mic" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='149' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='150' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.microphone.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='151' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='152' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "mic" on "calls.actions.microphone.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='153' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='154' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='155' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='156' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='157' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 0m 23s+742ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Camera off-On during a video call on term side</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='158' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='159' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='160' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='161' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='162' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='163' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='164' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='165' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='166' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='167' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='168' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='169' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='170' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='171' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "videocam" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='172' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.camera.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='173' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='174' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "videocam_off" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='175' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.camera.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='176' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='177' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "videocam" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='178' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='179' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='180' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='181' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 0m 25s+600ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Camera off-On during a video call on orig side</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='182' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='183' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='184' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='185' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='186' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='187' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='188' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='189' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='190' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='191' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='192' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='193' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='194' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='195' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "videocam" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='196' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.camera.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='197' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='198' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "videocam_off" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='199' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.camera.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='200' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='201' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "videocam" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='202' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='203' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='204' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='205' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 0m 34s+5ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Simultaneous Camera off-On during a video call</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='206' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='207' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='208' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='209' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='210' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='211' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='212' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='213' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='214' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='215' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='216' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='217' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='218' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='219' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "videocam" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='220' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.camera.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='221' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='222' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "videocam_off" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='223' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "videocam" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='224' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.camera.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='225' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='226' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "videocam_off" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='227' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='228' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.camera.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='229' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='230' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "videocam" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='231' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.camera.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='232' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='233' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "videocam" on "calls.actions.camera.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='234' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='235' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='236' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='237' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 0m 38s+615ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Screen Share during a video call on term side</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='238' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='239' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='240' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='241' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='242' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='243' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='244' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='245' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='246' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='247' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='248' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='249' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='250' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='251' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "stop_screen_share" on "calls.actions.screenshare.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='252' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.screenshare.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='253' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "4000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='254' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA select "calls.actions.screenshare.chose_image"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='255' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='256' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.screenshare.chosen_image_share"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='257' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "10000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='258' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "screen_share" on "calls.actions.screenshare.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='259' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.screenshare.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='260' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "stop_screen_share" on "calls.actions.screenshare.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='261' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "5000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='262' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='263' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='264' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='265' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 0m 30s+896ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Hold-Unhold the call on term side</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='266' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='267' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='268' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='269' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='270' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='271' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='272' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='273' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='274' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='275' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='276' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='277' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='278' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='279' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='280' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='281' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "pause" on "calls.actions.hold.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='282' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.hold.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='283' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "7000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='284' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "play_arrow" on "calls.actions.hold.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='285' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.hold.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='286' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='287' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='288' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='289' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='290' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+	</div>
+	<span class='duration right label'>0h 0m 40s+15ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Hold-Unhold the call on orig side</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='291' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='292' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='293' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='294' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='295' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='296' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='297' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='298' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='299' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='300' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "011902165222512@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='301' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='302' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='303' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='304' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='305' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='306' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "pause" on "calls.actions.hold.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='307' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.hold.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='308' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "7000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='309' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB can see "play_arrow" on "calls.actions.hold.button.icon" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='310' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.hold.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='311' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='312' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.actions.callend.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='313' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='314' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='315' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='316' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='317'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify that User A, B nd C can perform transfer</span>
+						<span class='test-time'>Jan 22, 2019 10:10:35 AM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='scenario node' test-id='318' status='fail'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+		<span class='category label white-text'>@UserC</span>
+	</div>
+	<span class='duration right label'>0h 2m 35s+747ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Blind Transfer</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='319' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='320' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='321' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='322' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserC can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='323' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='324' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserC clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='325' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='326' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='327' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='328' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "011902165225323@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='329' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='330' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='331' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='332' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='333' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "5000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='334' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.transfer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='335' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='336' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.transfer.transfercall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='337' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='338' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "011902165225287@172.28.247.41" to "calls.actions.transfer.number.search.bar"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='339' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='340' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.transfer.number.ok.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='341' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='342' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserC clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='343' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "10000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='344' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.callendbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='345' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='346' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "contacts.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='347' class='node and fail' status='fail'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserC clicks "contacts.tab"</span>
+				<div class='pre'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: navigation-view__tab__Contacts (tried for 30 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at utility.HookC.waitForElementVisibilityOfC(HookC.java:200)
+	at utility.HookC.clickC(HookC.java:105)
+	at stepdefinitions.mystepdefinitions_C.userc_clicks_something(mystepdefinitions_C.java:194)
+	at ?.And UserC clicks "contacts.tab"(src/test/resources/features/Call_Transfer_Actions.feature:33)
+Caused by: org.openqa.selenium.NoSuchWindowException: no such window: window was already closed
+  (Session info: content shell=)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'NTS5CG7321YLY', ip: '217.78.102.126', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.36.540470 (e522d04694c7eb..., userDataDir: C:\Users\musta\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: , webStorageEnabled: true, webdriver.remote.sessionid: ac9a007275fbfec250223b6a026...}
+Session ID: ac9a007275fbfec250223b6a02646313
+*** Element info: {Using=id, value=navigation-view__tab__Contacts}
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	at utility.HookC.waitForElementVisibilityOfC(HookC.java:200)
+	at utility.HookC.clickC(HookC.java:105)
+	at stepdefinitions.mystepdefinitions_C.userc_clicks_something(mystepdefinitions_C.java:194)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:38)
+	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
+	at cucumber.runtime.Runtime.runStep(Runtime.java:300)
+	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:44)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:165)
+	at cucumber.api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:63)
+	at cucumber.api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:21)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='348' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+		<span class='category label white-text'>@UserB</span>
+		<span class='category label white-text'>@UserC</span>
+	</div>
+	<span class='duration right label'>0h 2m 18s+233ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Consultative Transfer</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='349' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='350' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='351' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserB can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='352' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserC can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='353' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='354' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserC clicks "calls.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='355' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='356' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='357' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='358' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "011902165225323@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='359' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='360' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='361' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='362' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='363' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "5000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='364' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.fullscreen.exit.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='365' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='366' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.dialbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='367' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='368' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='369' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "011902165225287@172.28.247.41" to "calls.dialpadinput"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='370' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='371' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.dialpadcall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='372' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserC waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='373' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserC clicks "calls.answer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='374' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "5000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='375' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.transfer.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='376' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='377' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.transfer.transfercall.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='378' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='379' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "calls.actions.transfer.consultavive.UserC.number"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='380' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "10000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='381' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "calls.callendbutton"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='382' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='383' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='384' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserC exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='385'>
+					<div class='test-heading'>
+						<span class='test-name'>Contact actions</span>
+						<span class='test-time'>Jan 22, 2019 10:15:38 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='scenario node' test-id='386' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+	</div>
+	<span class='duration right label'>0h 0m 32s+125ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">User can search a contact from the search bar</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='387' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Create Group" on "contacts.creategroup.button" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='388' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='389' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "Semra Boyaci" to "contacts.search.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='390' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='391' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "Semra Boyaci" on "Contact.Semra.Boyaci.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='392' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.close.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='393' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='394' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+	</div>
+	<span class='duration right label'>0h 0m 14s+612ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">User can view the details of a contact</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='395' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Create Group" on "contacts.creategroup.button" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='396' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='397' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "Semra Boyaci" to "contacts.search.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='398' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='399' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Semra.Boyaci"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='400' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.view.contact.info"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='401' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='402' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "close" on "contact.details.right.panel.close.button.text.area" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='403' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.details.right.panel.close.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='404' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='405' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.close.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='406' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='407' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+	</div>
+	<span class='duration right label'>0h 0m 14s+532ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Add contact, remove contacts</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='408' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Create Group" on "contacts.creategroup.button" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='409' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='410' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "Ecem Yilmaz" to "contacts.search.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='411' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='412' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Ecem.Yilmaz"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='413' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='414' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.add.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='415' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='416' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.close.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='417' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='418' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Ecem.Yilmaz"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='419' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.remove.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='420' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='421' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+	</div>
+	<span class='duration right label'>0h 0m 26s+660ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Add contact to favorites, remove from favorites</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='422' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Create Group" on "contacts.creategroup.button" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='423' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='424' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "Baris Askin" to "contacts.search.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='425' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='426' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Baris.Askin"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='427' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='428' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.add.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='429' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='430' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.close.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='431' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='432' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Baris.Askin"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='433' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='434' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.add.favorite"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='435' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='436' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Baris.Askin"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='437' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='438' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.remove.from.favorite"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='439' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='440' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Baris.Askin"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='441' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.remove.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='442' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='443' status='pass'>
+	<div class='category-list'>
+		<span class='category label white-text'>@UserA</span>
+	</div>
+	<span class='duration right label'>0h 1m 13s+6ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Add contacts, create group, delete group.</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='444' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Create Group" on "contacts.creategroup.button" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='445' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='446' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='447' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "Damla Seker" to "contacts.search.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='448' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='449' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Damla.Seker"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='450' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.add.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='451' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='452' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.close.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='453' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='454' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='455' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "Mehmet Usanmaz" to "contacts.search.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='456' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='457' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Mehmet.Usanmaz"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='458' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.add.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='459' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='460' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.close.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='461' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "Create Group" on "contacts.creategroup.button" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='462' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.creategroup.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='463' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='464' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.group.name.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='465' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='466' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.new.group.name.cancel"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='467' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='468' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.creategroup.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='469' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='470' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.group.name.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='471' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='472' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "NewGroup" to "contacts.group.name.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='473' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "4000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='474' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.new.group.name.save"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='475' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "5000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='476' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.NewGroup.more.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='477' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='478' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.group.modify"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='479' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='480' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "Contact.Mehmet.Usanmaz.Group"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='481' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='482' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "Contact.Damla.Seker.Group"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='483' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='484' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.group.modify.add.contact.save"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='485' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='486' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.NewGroup.more.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='487' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='488' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.group.remove"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='489' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='490' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.group.delete.cancel.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='491' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='492' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.NewGroup.more.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='493' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='494' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.group.remove"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='495' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='496' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.group.delete.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='497' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='498' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Mehmet.Usanmaz"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='499' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.remove.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='500' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='501' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Damla.Seker"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='502' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.remove.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='503' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='504' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='505'>
+					<div class='test-heading'>
+						<span class='test-name'>Send IM</span>
+						<span class='test-time'>Jan 22, 2019 10:18:19 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='scenario node' test-id='506' status='pass'>
+	<span class='duration right label'>0h 2m 4s+996ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Messaging between A and B users</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='507' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Create Group" on "contacts.creategroup.button" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='508' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='509' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "Murat Cinar" to "contacts.search.input"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='510' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='511' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Murat.Cinar"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='512' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='513' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.add.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='514' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='515' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contacts.search.close.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='516' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='517' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA choose "Murat Cinar" to send message</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='518' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='519' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA enters "hello" to "messages.newmessage"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='520' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='521' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "messages.sendkey"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='522' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='523' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB checks if the message from "Mustafa Yol" received is "hello"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='524' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='525' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB choose "Mustafa Yol" to send message</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='526' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='527' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB enters "merhaba" to "messages.newmessage"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='528' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='529' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "messages.sendkey"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='530' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='531' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA checks if the message from "Murat Cinar" received is "merhaba"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='532' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='533' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA right clicks on "Contact.Murat.Cinar"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='534' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "contact.remove.contact"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='535' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='536' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='537' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.logout.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='538' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.popuplogout"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='539' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='540' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='541' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "settings.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='542' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "settings.logout.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='543' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB clicks "settings.popuplogout"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='544' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='545' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserB exits client</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='546'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify User A can checks the buttons in the settings page</span>
+						<span class='test-time'>Jan 22, 2019 10:20:24 AM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='scenario node' test-id='547' status='fail'>
+	<span class='duration right label'>0h 1m 50s+717ms</span>
+	<div class='desc'>
+		<b>Scenario</b>
+		<span class="desc-text">Buttons in the settings page</span>
+	</div>
+	<ul class='steps'>
+		<li test-id='548' class='node given pass' status='pass'>
+			
+			<b>Given</b>
+			
+			<span class="bdd-step-name">Given UserA can see "Calls" on "calls.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='549' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA can see "settings" on "settings.tab.text" location</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='550' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.tab"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='551' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then UserA clicks "settings.show.contact.status.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='552' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='553' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.show.contact.status.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='554' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='555' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.play.sound.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='556' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='557' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.play.sound.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='558' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='559' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.play.sound.messages.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='560' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='561' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.play.sound.messages.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='562' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='563' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.taskbar.notifications.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='564' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='565' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.taskbar.notifications.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='566' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='567' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.startup.automatically.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='568' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='569' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.startup.automatically.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='570' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "1000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='571' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.ews.on.off.button"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='572' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='573' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.ews.cancel"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='574' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "2000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='575' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA test method</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='576' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "settings.microphone1"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='577' class='node and pass' status='pass'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA waits for "3000" seconds</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='578' class='node and fail' status='fail'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA clicks "Internal.Microphone"</span>
+				<div class='pre'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //li[contains(text(),'Microphone')] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at utility.HookA.waitForElementVisibilityOfA(HookA.java:227)
+	at utility.HookA.clickA(HookA.java:106)
+	at stepdefinitions.mystepdefinitions_A.usera_clicks_something(mystepdefinitions_A.java:220)
+	at ?.And UserA clicks "Internal.Microphone"(src/test/resources/features/Settings.Page.feature:36)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//li[contains(text(),'Microphone')]"}
+  (Session info: content shell=)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'NTS5CG7321YLY', ip: '217.78.102.126', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.36.540470 (e522d04694c7eb..., userDataDir: C:\Users\musta\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: , webStorageEnabled: true, webdriver.remote.sessionid: f6b3193036333cdee3bddcca47d...}
+Session ID: f6b3193036333cdee3bddcca47dbb069
+*** Element info: {Using=xpath, value=//li[contains(text(),'Microphone')]}
+	at sun.reflect.GeneratedConstructorAccessor18.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	at utility.HookA.waitForElementVisibilityOfA(HookA.java:227)
+	at utility.HookA.clickA(HookA.java:106)
+	at stepdefinitions.mystepdefinitions_A.usera_clicks_something(mystepdefinitions_A.java:220)
+	at sun.reflect.GeneratedMethodAccessor8.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:38)
+	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
+	at cucumber.runtime.Runtime.runStep(Runtime.java:300)
+	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:44)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:165)
+	at cucumber.api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:63)
+	at cucumber.api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:21)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div>
+			
+		</li>
+		<li test-id='579' class='node and skip' status='skip'>
+			
+			<b>And</b>
+			
+			<span class="bdd-step-name">And UserA exits client</span>
+				<div class='pre'>skipped</div>
+			
+		</li>
+	</ul>
+</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<div id='category-view' class='view hide'>
+
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+				
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Categories</h3>
+			<ul id='category-collection' class='category-collection'>
+				
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@desktop</span>
+						<span class='category-status right'>
+							<span class='label pass'>4</span>
+							<span class='label fail'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 4</span>
+							<span class='label red lighten-1 white-text'>Failed: 1</span>
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Jan 22, 2019 10:01:50 AM</td>
+										<td class='linked' test-id='1'>Login & Logout scenarios with kandy and skype users.</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:04:00 AM</td>
+										<td class='linked' test-id='54'>Verify that User A and B can perform basic call and mid-call actions.</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:15:38 AM</td>
+										<td class='linked' test-id='385'>Contact actions</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:18:19 AM</td>
+										<td class='linked' test-id='505'>Send IM</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:20:24 AM</td>
+										<td class='linked' test-id='546'>Verify User A can checks the buttons in the settings page</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@UserA</span>
+						<span class='category-status right'>
+							<span class='label pass'>21</span>
+							<span class='label fail'>2</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 21</span>
+							<span class='label red lighten-1 white-text'>Failed: 2</span>
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Jan 22, 2019 10:01:50 AM</td>
+										<td class='linked' test-id='2'>Login & Logout scenarios with kandy and skype users..Login: Use correct kandy and skype credentials</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:02:30 AM</td>
+										<td class='linked' test-id='19'>Login & Logout scenarios with kandy and skype users..Login: Use S4B with only kandy, use correct credentials</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:02:56 AM</td>
+										<td class='linked' test-id='34'>Login & Logout scenarios with kandy and skype users..Login: Use incorrect kandy credentials</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:03:37 AM</td>
+										<td class='linked' test-id='43'>Login & Logout scenarios with kandy and skype users..Login: Use correct kandy and incorrect skype credentials</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:04:00 AM</td>
+										<td class='linked' test-id='55'>Verify that User A and B can perform basic call and mid-call actions..Basic Call</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:05:23 AM</td>
+										<td class='linked' test-id='72'>Verify that User A and B can perform basic call and mid-call actions..Mute-Unmute during a video call on term side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:05:53 AM</td>
+										<td class='linked' test-id='97'>Verify that User A and B can perform basic call and mid-call actions..Mute-Unmute during a video call on orig side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:06:26 AM</td>
+										<td class='linked' test-id='122'>Verify that User A and B can perform basic call and mid-call actions..Dual Mute-Unmute during a video call</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:07:22 AM</td>
+										<td class='linked' test-id='157'>Verify that User A and B can perform basic call and mid-call actions..Camera off-On during a video call on term side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:07:45 AM</td>
+										<td class='linked' test-id='181'>Verify that User A and B can perform basic call and mid-call actions..Camera off-On during a video call on orig side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:08:11 AM</td>
+										<td class='linked' test-id='205'>Verify that User A and B can perform basic call and mid-call actions..Simultaneous Camera off-On during a video call</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:08:45 AM</td>
+										<td class='linked' test-id='237'>Verify that User A and B can perform basic call and mid-call actions..Screen Share during a video call on term side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:09:24 AM</td>
+										<td class='linked' test-id='265'>Verify that User A and B can perform basic call and mid-call actions..Hold-Unhold the call on term side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:09:55 AM</td>
+										<td class='linked' test-id='290'>Verify that User A and B can perform basic call and mid-call actions..Hold-Unhold the call on orig side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:10:35 AM</td>
+										<td class='linked' test-id='318'>Verify that User A, B nd C can perform transfer.Blind Transfer</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:13:20 AM</td>
+										<td class='linked' test-id='348'>Verify that User A, B nd C can perform transfer.Consultative Transfer</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:15:38 AM</td>
+										<td class='linked' test-id='386'>Contact actions.User can search a contact from the search bar</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:16:10 AM</td>
+										<td class='linked' test-id='394'>Contact actions.User can view the details of a contact</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:16:25 AM</td>
+										<td class='linked' test-id='407'>Contact actions.Add contact, remove contacts</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:16:39 AM</td>
+										<td class='linked' test-id='421'>Contact actions.Add contact to favorites, remove from favorites</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:17:06 AM</td>
+										<td class='linked' test-id='443'>Contact actions.Add contacts, create group, delete group.</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:18:19 AM</td>
+										<td class='linked' test-id='505'>Send IM</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:20:24 AM</td>
+										<td class='linked' test-id='546'>Verify User A can checks the buttons in the settings page</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@UserB</span>
+						<span class='category-status right'>
+							<span class='label pass'>12</span>
+							<span class='label fail'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 12</span>
+							<span class='label red lighten-1 white-text'>Failed: 1</span>
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Jan 22, 2019 10:04:00 AM</td>
+										<td class='linked' test-id='55'>Verify that User A and B can perform basic call and mid-call actions..Basic Call</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:05:23 AM</td>
+										<td class='linked' test-id='72'>Verify that User A and B can perform basic call and mid-call actions..Mute-Unmute during a video call on term side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:05:53 AM</td>
+										<td class='linked' test-id='97'>Verify that User A and B can perform basic call and mid-call actions..Mute-Unmute during a video call on orig side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:06:26 AM</td>
+										<td class='linked' test-id='122'>Verify that User A and B can perform basic call and mid-call actions..Dual Mute-Unmute during a video call</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:07:22 AM</td>
+										<td class='linked' test-id='157'>Verify that User A and B can perform basic call and mid-call actions..Camera off-On during a video call on term side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:07:45 AM</td>
+										<td class='linked' test-id='181'>Verify that User A and B can perform basic call and mid-call actions..Camera off-On during a video call on orig side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:08:11 AM</td>
+										<td class='linked' test-id='205'>Verify that User A and B can perform basic call and mid-call actions..Simultaneous Camera off-On during a video call</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:08:45 AM</td>
+										<td class='linked' test-id='237'>Verify that User A and B can perform basic call and mid-call actions..Screen Share during a video call on term side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:09:24 AM</td>
+										<td class='linked' test-id='265'>Verify that User A and B can perform basic call and mid-call actions..Hold-Unhold the call on term side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:09:55 AM</td>
+										<td class='linked' test-id='290'>Verify that User A and B can perform basic call and mid-call actions..Hold-Unhold the call on orig side</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:10:35 AM</td>
+										<td class='linked' test-id='318'>Verify that User A, B nd C can perform transfer.Blind Transfer</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:13:20 AM</td>
+										<td class='linked' test-id='348'>Verify that User A, B nd C can perform transfer.Consultative Transfer</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:18:19 AM</td>
+										<td class='linked' test-id='505'>Send IM</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@UserC</span>
+						<span class='category-status right'>
+							<span class='label pass'>1</span>
+							<span class='label fail'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 1</span>
+							<span class='label red lighten-1 white-text'>Failed: 1</span>
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Jan 22, 2019 10:10:35 AM</td>
+										<td class='linked' test-id='318'>Verify that User A, B nd C can perform transfer.Blind Transfer</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Jan 22, 2019 10:13:20 AM</td>
+										<td class='linked' test-id='348'>Verify that User A, B nd C can perform transfer.Consultative Transfer</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='category-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- category view -->
+<div id='exception-view' class='view hide'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Exceptions</h3>
+                <ul id='exception-collection' class='exception-collection'>
+
+                        <li class='exception displayed active'>
+                            <div class='exception-heading'>
+                                <span class='exception-name'>org.openqa.selenium.TimeoutException</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>2</span></span>
+                            </div>
+                            <div class='exception-content hide'>
+                                <div class='exception-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                    <tr>
+                                                        <td>Jan 22, 2019 10:12:40 AM</td>
+                                                        <td class='linked' test-id='347'>Verify that User A, B nd C can perform transfer.Blind Transfer.And UserC clicks "contacts.tab"</td>
+                                                        <td><pre><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: navigation-view__tab__Contacts (tried for 30 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at utility.HookC.waitForElementVisibilityOfC(HookC.java:200)
+	at utility.HookC.clickC(HookC.java:105)
+	at stepdefinitions.mystepdefinitions_C.userc_clicks_something(mystepdefinitions_C.java:194)
+	at ?.And UserC clicks "contacts.tab"(src/test/resources/features/Call_Transfer_Actions.feature:33)
+Caused by: org.openqa.selenium.NoSuchWindowException: no such window: window was already closed
+  (Session info: content shell=)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'NTS5CG7321YLY', ip: '217.78.102.126', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.36.540470 (e522d04694c7eb..., userDataDir: C:\Users\musta\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: , webStorageEnabled: true, webdriver.remote.sessionid: ac9a007275fbfec250223b6a026...}
+Session ID: ac9a007275fbfec250223b6a02646313
+*** Element info: {Using=id, value=navigation-view__tab__Contacts}
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	at utility.HookC.waitForElementVisibilityOfC(HookC.java:200)
+	at utility.HookC.clickC(HookC.java:105)
+	at stepdefinitions.mystepdefinitions_C.userc_clicks_something(mystepdefinitions_C.java:194)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:38)
+	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
+	at cucumber.runtime.Runtime.runStep(Runtime.java:300)
+	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:44)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:165)
+	at cucumber.api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:63)
+	at cucumber.api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:21)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jan 22, 2019 10:21:14 AM</td>
+                                                        <td class='linked' test-id='578'>Verify User A can checks the buttons in the settings page.Buttons in the settings page.And UserA clicks "Internal.Microphone"</td>
+                                                        <td><pre><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //li[contains(text(),'Microphone')] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at utility.HookA.waitForElementVisibilityOfA(HookA.java:227)
+	at utility.HookA.clickA(HookA.java:106)
+	at stepdefinitions.mystepdefinitions_A.usera_clicks_something(mystepdefinitions_A.java:220)
+	at ?.And UserA clicks "Internal.Microphone"(src/test/resources/features/Settings.Page.feature:36)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//li[contains(text(),'Microphone')]"}
+  (Session info: content shell=)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'NTS5CG7321YLY', ip: '217.78.102.126', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.36.540470 (e522d04694c7eb..., userDataDir: C:\Users\musta\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: , webStorageEnabled: true, webdriver.remote.sessionid: f6b3193036333cdee3bddcca47d...}
+Session ID: f6b3193036333cdee3bddcca47dbb069
+*** Element info: {Using=xpath, value=//li[contains(text(),'Microphone')]}
+	at sun.reflect.GeneratedConstructorAccessor18.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	at utility.HookA.waitForElementVisibilityOfA(HookA.java:227)
+	at utility.HookA.clickA(HookA.java:106)
+	at stepdefinitions.mystepdefinitions_A.usera_clicks_something(mystepdefinitions_A.java:220)
+	at sun.reflect.GeneratedMethodAccessor8.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:38)
+	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
+	at cucumber.runtime.Runtime.runStep(Runtime.java:300)
+	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:44)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:165)
+	at cucumber.api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:63)
+	at cucumber.api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:21)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='exception-name'></h5>
+        </div>
+    </div>
+</div>
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Features
+					<div class='panel-lead'>6</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Scenarios
+					<div class='panel-lead'>23</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>550</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Jan 22, 2019 10:01:50 AM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Jan 22, 2019 10:22:18 AM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>1,228,034ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>user</td>
+								<td>myol</td>
+							</tr>
+							<tr>
+								<td>Time Zone</td>
+								<td>Asia/Istanbul</td>
+							</tr>
+							<tr>
+								<td>os</td>
+								<td>Windows 10</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+			<div class='col s6'>
+				<div class='card-panel dashboard-categories'>
+					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Passed</th>
+							<th>Failed</th>
+							<th>Others</th>
+							<th>Passed %</th>
+						</tr>
+						<tr>
+							<td>@desktop</td>
+							<td>4</td>
+							<td>1</td>
+							<td>0</td>
+							<td>
+									80%
+							</td>
+						</tr>
+						<tr>
+							<td>@UserA</td>
+							<td>21</td>
+							<td>2</td>
+							<td>0</td>
+							<td>
+									91.304%
+							</td>
+						</tr>
+						<tr>
+							<td>@UserB</td>
+							<td>12</td>
+							<td>1</td>
+							<td>0</td>
+							<td>
+									92.308%
+							</td>
+						</tr>
+						<tr>
+							<td>@UserC</td>
+							<td>1</td>
+							<td>1</td>
+							<td>0</td>
+							<td>
+									50%
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<div id='testrunner-logs-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>TestRunner Logs</h5>
+		
+		<div class='card-panel'>
+				Sample test runner output message
+		</div>
+	</div>
+</div>
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 4,
+				failParent: 2,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 2,
+				
+				passChild: 21,
+				failChild: 2,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				exceptionsChild: 2,
+				
+				passGrandChild: 547,
+				failGrandChild: 2,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 1,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 3,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>

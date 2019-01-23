@@ -6,7 +6,7 @@ Feature: Login & Logout scenarios with kandy and skype users.
 @UserA
   Scenario: Login: Use correct kandy and skype credentials
     Given UserA enters "011902165222512@172.28.247.41" to "login.kandyusername"
-      And UserA enters "myol" to "login.kandyauthname" 
+      And UserA enters "myol007" to "login.kandyauthname" 
       And UserA enters "3456" to "login.kandypassword"
      When UserA clicks "login.kandysubmit"
       And UserA enters "myol@gbsolutions.work" to "login.skypeusername"
@@ -25,7 +25,7 @@ Feature: Login & Logout scenarios with kandy and skype users.
 @UserA
  Scenario: Login: Use S4B with only kandy, use correct credentials
     Given UserA enters "011902165222512@172.28.247.41" to "login.kandyusername"
-      And UserA enters "myol" to "login.kandyauthname" 
+      And UserA enters "myol007" to "login.kandyauthname" 
       And UserA enters "3456" to "login.kandypassword"
      When UserA clicks "login.kandysubmit"
       And UserA clicks "login.skypeskip" 
@@ -42,7 +42,7 @@ Feature: Login & Logout scenarios with kandy and skype users.
 @UserA
  Scenario: Login: Use incorrect kandy credentials
     Given UserA enters "incorrect@incorrect" to "login.kandyusername"
-      And UserA enters "myol" to "login.kandyauthname" 
+      And UserA enters "myol007" to "login.kandyauthname" 
       And UserA enters "3456" to "login.kandypassword"
      When UserA clicks "login.kandysubmit"
       And UserA waits for "3000" seconds
@@ -56,7 +56,7 @@ Feature: Login & Logout scenarios with kandy and skype users.
   Scenario: Login: Use correct kandy and incorrect skype credentials
     Given UserA can see "Login" on "login.kandysubmit" location
       And UserA enters "011902165222512@172.28.247.41" to "login.kandyusername"
-      And UserA enters "myol" to "login.kandyauthname" 
+      And UserA enters "myol007" to "login.kandyauthname" 
       And UserA enters "3456" to "login.kandypassword"
      When UserA clicks "login.kandysubmit"
       And UserA enters "myol@gbsolutions.work" to "login.skypeusername"

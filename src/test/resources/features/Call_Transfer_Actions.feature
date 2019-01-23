@@ -30,6 +30,7 @@ Feature: Verify that User A, B nd C can perform transfer
       And UserB clicks "calls.callendbutton"
       And UserA clicks "contacts.tab"
       And UserB clicks "contacts.tab"
+      And UserC waits for "3000" seconds
       And UserC clicks "contacts.tab"
       
    
@@ -68,4 +69,7 @@ Scenario: Consultative Transfer
       And UserA clicks "calls.actions.transfer.consultavive.UserC.number"
       And UserA waits for "10000" seconds
       And UserB clicks "calls.callendbutton"
+      And UserA exits client 
+      And UserB exits client 
+      And UserC exits client 
       

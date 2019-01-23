@@ -1,81 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
     <line>
       <![CDATA[Exiting the Application A!]]>
     </line>
     <line>
-      <![CDATA[Exiting the Application A!]]>
-    </line>
-    <line>
-      <![CDATA[Exiting the Application A!]]>
-    </line>
-    <line>
-      <![CDATA[Exiting the Application A!]]>
-    </line>
-    <line>
-      <![CDATA[Exiting the Application A!]]>
-    </line>
-    <line>
       <![CDATA[Exiting the Application B!]]>
     </line>
     <line>
-      <![CDATA[Exiting the Application A!]]>
-    </line>
-    <line>
-      <![CDATA[Exiting the Application A!]]>
-    </line>
-    <line>
-      <![CDATA[Exiting the Application B!]]>
-    </line>
-    <line>
-      <![CDATA[Exiting the Application A!]]>
+      <![CDATA[Exiting the Application C!]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="682670" started-at="2019-01-17T11:30:27Z" finished-at="2019-01-17T11:41:50Z">
+  <suite name="Default suite" duration-ms="190621" started-at="2019-01-22T07:40:48Z" finished-at="2019-01-22T07:43:59Z">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Call_Transfer_Actions_Test@5ec0a365]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Default test" duration-ms="682670" started-at="2019-01-17T11:30:27Z" finished-at="2019-01-17T11:41:50Z">
-      <class name="runners.Test_report_Test">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="setUpClass" is-config="true" duration-ms="279" started-at="2019-01-17T11:30:27Z" finished-at="2019-01-17T11:30:27Z">
+    <test name="Default test" duration-ms="190621" started-at="2019-01-22T07:40:48Z" finished-at="2019-01-22T07:43:59Z">
+      <class name="runners.Call_Transfer_Actions_Test">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:runners.Call_Transfer_Actions_Test@5ec0a365]" name="setUpClass" is-config="true" duration-ms="255" started-at="2019-01-22T07:40:48Z" finished-at="2019-01-22T07:40:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="setup" is-config="true" duration-ms="0" started-at="2019-01-17T11:30:27Z" finished-at="2019-01-17T11:30:27Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="feature" duration-ms="116703" started-at="2019-01-17T11:30:27Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2019-01-17T11:32:24Z">
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Call_Transfer_Actions_Test@5ec0a365]" name="feature" duration-ms="190256" started-at="2019-01-22T07:40:48Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2019-01-22T07:43:59Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Login & Logout scenarios with kandy and skype users.]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Exiting the Application A!]]>
-            </line>
-            <line>
-              <![CDATA[Exiting the Application A!]]>
-            </line>
-            <line>
-              <![CDATA[Exiting the Application A!]]>
-            </line>
-            <line>
-              <![CDATA[Exiting the Application A!]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- feature -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="feature" duration-ms="187580" started-at="2019-01-17T11:32:24Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2019-01-17T11:35:32Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Verify that User A and B can perform basic call and mid-call actions.]]>
+                <![CDATA[Verify that User A, B nd C can perform transfer]]>
               </value>
             </param>
           </params>
@@ -86,62 +38,16 @@
             <line>
               <![CDATA[Exiting the Application B!]]>
             </line>
-          </reporter-output>
-        </test-method> <!-- feature -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="feature" duration-ms="152511" started-at="2019-01-17T11:35:32Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2019-01-17T11:38:04Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Contact actions]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
             <line>
-              <![CDATA[Exiting the Application A!]]>
+              <![CDATA[Exiting the Application C!]]>
             </line>
           </reporter-output>
         </test-method> <!-- feature -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="feature" duration-ms="106184" started-at="2019-01-17T11:38:04Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2019-01-17T11:39:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Send IM]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Exiting the Application A!]]>
-            </line>
-            <line>
-              <![CDATA[Exiting the Application B!]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- feature -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="feature" duration-ms="118888" started-at="2019-01-17T11:39:50Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2019-01-17T11:41:49Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Verify User A can checks the buttons in the settings page]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Exiting the Application A!]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- feature -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="teardown" is-config="true" duration-ms="16" started-at="2019-01-17T11:41:49Z" finished-at="2019-01-17T11:41:49Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:runners.Test_report_Test@2ac273d3]" name="tearDownClass" is-config="true" duration-ms="400" started-at="2019-01-17T11:41:49Z" finished-at="2019-01-17T11:41:50Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:runners.Call_Transfer_Actions_Test@5ec0a365]" name="tearDownClass" is-config="true" duration-ms="31" started-at="2019-01-22T07:43:59Z" finished-at="2019-01-22T07:43:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- runners.Test_report_Test -->
+      </class> <!-- runners.Call_Transfer_Actions_Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
