@@ -11,13 +11,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.core.api.Scenario;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import utility.HookB;
 
 
@@ -59,19 +59,14 @@ public class mystepdefinitions_B extends HookB {
     		}
            
     		else  {
-    		
-    			System.out.println("Bdriver is null, creating the driver!");
-           	    System.out.println("Starting the Application B!");
-    	    	RemoteLaunch_Client_B(); 	
-	    	   	typeB(selectors.getProperty("login.kandyusername"), selectors.getProperty("userB.kandy.name"));
-	    	   	typeB(selectors.getProperty("login.kandyauthname"), selectors.getProperty("userB.kandy.auth"));
-	    	   	typeB(selectors.getProperty("login.kandypassword"), selectors.getProperty("userB.kandy.pass"));
-	    	   	clickB(selectors.getProperty("login.kandysubmit"));         
-	    	   	typeB(selectors.getProperty("login.skypeusername"), selectors.getProperty("userB.skype.name"));
-	    	   	typeB(selectors.getProperty("login.skypepassword"), selectors.getProperty("userB.skype.pass"));
-	    	   	clickB(selectors.getProperty("login.skypesubmit")); 
-	    	   	clickB(selectors.getProperty("contacts.credentialssaveno"));
-	    	   	Thread.sleep(3000);
+
+                System.out.println("Adriver is null, creating the driver!");
+                System.out.println("Starting the Application B!");
+                RemoteLaunch_Client_B();
+                typeB(selectors.getProperty("user1.name"), selectors.getProperty("login.username.input"));
+                typeB(selectors.getProperty("user1.password"), selectors.getProperty("login.password.input"));
+                clickB(selectors.getProperty("login.submit.button"));
+                Thread.sleep(3000);
     		}
 	    		
     	}
@@ -210,9 +205,8 @@ public class mystepdefinitions_B extends HookB {
 	
     @And("^UserB enters \"([^\"]*)\" to \"([^\"]*)\"$")
     public void userb_enters_something_to_something(String strArg1, String strArg2) throws Throwable {
-    	typeB(selectors.getProperty(strArg2), strArg1);
-   
-       	
+
+        typeB(selectors.getProperty(strArg1), selectors.getProperty(strArg2));
     	
     }
 

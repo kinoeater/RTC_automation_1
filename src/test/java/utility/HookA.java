@@ -1,24 +1,16 @@
 package utility;
 
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,37 +22,48 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
 public class HookA {
 
 
     public static RemoteWebDriver Adriver;
-	
+
+  //  static Properties selectors = new Properties();
+
+
+
 	    public static void RemoteLaunch_Client_A() throws InterruptedException, FileNotFoundException, IOException, org.json.simple.parser.ParseException {
 
-        String BinaryPathA = "C:\\ConnectMe_Desktop_forSVAutomation\\ConnectMe Desktop - forSVAutomation.exe";
-        String huburl = "http://217.78.102.126:4444/wd/hub";
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary(BinaryPathA);
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setBrowserName("chrome");
-        capabilities.setPlatform(Platform.WINDOWS);
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        Adriver = new RemoteWebDriver(new URL(huburl), options);
-        Thread.sleep(7000);
+         //   selectors.load(HookA.class.getResourceAsStream("selector.properties"));
+         //   System.out.println("That is path from selectors "+ selectors.getProperty("Path"));
+            String BinaryPath = Constants.BinaryPath;
+            String hubURL = Constants.hubURL;
+            System.setProperty(Constants.Driver_name, Constants.ChromeDriver_path);
+            ChromeOptions options = new ChromeOptions();
+            options.setBinary(BinaryPath);
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName("chrome");
+            capabilities.setPlatform(Platform.WINDOWS);
+            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+            Adriver = new RemoteWebDriver(new URL(hubURL), options);
+            Thread.sleep(3000);
 
-    //    waitForElementVisibilityOfA("//*[@id='login-carousel']/div[1]/div[1] ");
-        
-        for (String hand: Adriver.getWindowHandles()) {
-            Adriver.switchTo().window(hand);
+
+            for (String hand : Adriver.getWindowHandles()) {
+                Adriver.switchTo().window(hand);
+            }
+
+            JavascriptExecutor js = (JavascriptExecutor) Adriver;
+            Thread.sleep(1000);
+            js.executeScript("require('electron').remote.BrowserWindow.getFocusedWindow().maximize();"); //maximize the window via JS
+
+            //  System.out.println(Adriver.getPageSource());
+
+            Thread.sleep(1000);
+
+
         }
-
-        JavascriptExecutor js = (JavascriptExecutor) Adriver;
-        Thread.sleep(1000);
-        js.executeScript("require('electron').remote.BrowserWindow.getFocusedWindow().maximize();"); //maximize the window via JS
-
-
-    }
 
     //-----Constructor remote driver----
 
@@ -75,11 +78,6 @@ public class HookA {
         Adriver.quit();
 
     }
-
-
-
-
-
 
 
     //---read JSON file---
@@ -110,6 +108,33 @@ public class HookA {
     }
 
 
+    public void actionMoveAndClick(String sel) throws Exception {
+
+        By by = getByA(sel);
+
+        WebElement el = Adriver.findElement(by);
+        Actions action = new Actions(Adriver);
+        WebDriverWait wait = new WebDriverWait(Adriver, 30);
+
+        try {
+            waitForElementClickableA(sel);
+            action.moveToElement(el).click().build().perform();
+            System.out.println("Successfully Action Moved and Clicked on the WebElement, using locator: " + "<" + by.toString() + ">");
+        } catch (StaleElementReferenceException elementUpdated) {
+            WebElement elementToClick = el;
+            Boolean elementPresent =  wait.until(ExpectedConditions.elementToBeClickable(by)).isEnabled();
+            if (elementPresent == true) {
+                action.moveToElement(el).click().build().perform();
+                System.out.println("(Stale Exception) - Successfully Action Moved and Clicked on the WebElement, using locator: " + "<" + el.toString() + ">");
+            }
+        } catch (Exception e) {
+            System.out.println("Unable to Action Move and Click on the WebElement, using locator: " + "<" + el.toString() + ">");
+            Assert.fail("Unable to Action Move and Click on the WebElement, Exception: " + e.getMessage());
+        }
+    }
+
+
+
     // method that helps to select on certain clickable elements
 
     public static void selectA(String sel) {
@@ -119,6 +144,7 @@ public class HookA {
         WebElement el = Adriver.findElement(by);
         Actions action = new Actions(Adriver);
         action.moveToElement(el).click().build().perform();
+     // action.moveToElement(el).doubleClick().build().perform();
 
     }
 
@@ -138,7 +164,7 @@ public class HookA {
 
 
     // method that helps to type sth into certain input fields
-    public static void typeA(String sel, String keys) {
+    public static void typeA(String keys, String sel) {
 
         By by = getByA(sel);
         waitForElementVisibilityOfA(sel);
@@ -150,7 +176,7 @@ public class HookA {
 
     public static void verifyA(String keys, String sel) throws Exception {
 
-
+            Thread.sleep(1000);
         try {
 
             By by = getByA(sel);
@@ -159,7 +185,6 @@ public class HookA {
                 .until(ExpectedConditions.presenceOfElementLocated(by));
 
             String text = myDynamicElement.getText();
-            System.out.println(text);
 
             Assert.assertTrue(keys.equalsIgnoreCase(text));
             System.out.println("UserA can see " + "< " + text + " > element," +
@@ -172,16 +197,12 @@ public class HookA {
             WebElement myDynamicElement = (new WebDriverWait(Adriver, 30))
                 .until(ExpectedConditions.visibilityOfElementLocated(by));
 
-            String text = myDynamicElement.getText();
-            System.out.println(text);
+               String text = myDynamicElement.getText();
+            //  System.out.println(text);
 
             Assert.assertTrue(keys.equalsIgnoreCase(text));
-            System.out.println("Scond try with catch! UserA can see " + "< " + text + " > element," +
+            System.out.println("Second try with catch! UserA can see " + "< " + text + " > element," +
                 " Scenario is going well so far for userA!");
-
-
-
-            // Assert.fail("Could not find the " + keys);
 
         } catch (Exception e) {
 
@@ -189,6 +210,42 @@ public class HookA {
         }
 
     }
+
+
+    public static void verify_presence_A(String sel) throws Exception {
+
+        Thread.sleep(1000);
+        By by = getByA(sel);
+
+        try {
+
+            WebDriverWait wait = new WebDriverWait(Adriver, 60);
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+
+
+            System.out.println("UserA verifies that " + "< " + sel + " > is present," +
+                    " Scenario is going well so far for userA!");
+
+        } catch (AssertionError error) {
+
+
+            WebDriverWait wait = new WebDriverWait(Adriver, 60);
+
+            wait.until(ExpectedConditions.presenceOfElementLocated(by));
+
+
+            System.out.println("UserA verifies that " + "< " + sel + " > is present," +
+                    " Scenario is going well so far for userA!");
+
+
+        } catch (Exception e) {
+
+            Assert.fail(" ------>  Could not find the " + sel + " element");
+        }
+
+    }
+
 
 
     // method that helps to take a screenshot

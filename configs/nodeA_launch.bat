@@ -1,1 +1,1 @@
-java -Dwebdriver.chrome.driver="D:\work\Cucumber_S4B\s4b_3_client\chromedriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -nodeConfig nodeAConfig.json
+java -Dwebdriver.chrome.driver="C:\softphone\chromedriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -nodeConfig nodeAConfig.json

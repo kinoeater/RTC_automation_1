@@ -33,19 +33,17 @@ public class HookB {
 
     public static void RemoteLaunch_Client_B() throws InterruptedException, MalformedURLException {
 
-        String BinaryPathB = "C:\\ConnectMe_Desktop_forSVAutomation\\ConnectMe Desktop - forSVAutomation.exe";
-        String huburl = "http://217.78.102.126:4444/wd/hub";
-
+        String BinaryPath = Constants.BinaryPath;
+        String hubURL =Constants.hubURL;
+        System.setProperty(Constants.Driver_name, Constants.ChromeDriver_path);
         ChromeOptions options = new ChromeOptions();
-        options.setBinary(BinaryPathB);
+        options.setBinary(BinaryPath);
         DesiredCapabilities capabilities = new DesiredCapabilities();
-
-
         capabilities.setBrowserName("chrome");
         capabilities.setPlatform(Platform.WINDOWS);
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
-        Bdriver = new RemoteWebDriver(new URL(huburl), options);
+        Bdriver = new RemoteWebDriver(new URL(hubURL), options);
 
         Thread.sleep(7000);
 
@@ -109,7 +107,7 @@ public class HookB {
     }
 
     // method that helps to type sth into certain input fields
-    public static void typeB(String sel, String keys) {
+    public static void typeB(String keys, String sel) {
 
         By by = getByB(sel);
         waitForElementVisibilityOfB(sel);
@@ -123,7 +121,7 @@ public class HookB {
 
     public static void verifyB(String keys, String sel) throws Exception {
 
-
+        Thread.sleep(1000);
         try {
 
             By by = getByB(sel);
@@ -143,7 +141,7 @@ public class HookB {
                 .until(ExpectedConditions.visibilityOfElementLocated(by));
 
             String text = myDynamicElement.getText();
-            System.out.println(text);
+        //    System.out.println(text);
 
             Assert.assertTrue(keys.equalsIgnoreCase(text));
             System.out.println("Scond try with catch! UserB can see " + "< " + text + " > element," +

@@ -1,53 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
     <line>
-      <![CDATA[Exiting the Application A!]]>
-    </line>
-    <line>
-      <![CDATA[Exiting the Application B!]]>
-    </line>
-    <line>
-      <![CDATA[Exiting the Application C!]]>
+      <![CDATA[Exited the Application A!]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="190621" started-at="2019-01-22T07:40:48Z" finished-at="2019-01-22T07:43:59Z">
+  <suite name="Default suite" duration-ms="77935" started-at="2019-10-07T15:38:11 EET" finished-at="2019-10-07T15:39:29 EET">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Call_Transfer_Actions_Test@5ec0a365]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Test_Test@78e67e0a]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Default test" duration-ms="190621" started-at="2019-01-22T07:40:48Z" finished-at="2019-01-22T07:43:59Z">
-      <class name="runners.Call_Transfer_Actions_Test">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:runners.Call_Transfer_Actions_Test@5ec0a365]" name="setUpClass" is-config="true" duration-ms="255" started-at="2019-01-22T07:40:48Z" finished-at="2019-01-22T07:40:48Z">
+    <test name="Default test" duration-ms="77935" started-at="2019-10-07T15:38:11 EET" finished-at="2019-10-07T15:39:29 EET">
+      <class name="runners.Test_Test">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:runners.Test_Test@78e67e0a]" name="setUpClass" is-config="true" duration-ms="163" started-at="2019-10-07T15:38:11 EET" finished-at="2019-10-07T15:38:11 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Call_Transfer_Actions_Test@5ec0a365]" name="feature" duration-ms="190256" started-at="2019-01-22T07:40:48Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2019-01-22T07:43:59Z">
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleEventWrapper, io.cucumber.testng.CucumberFeatureWrapper)[pri:0, instance:runners.Test_Test@78e67e0a]" name="runScenario" duration-ms="77628" started-at="2019-10-07T15:38:11 EET" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2019-10-07T15:39:29 EET">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Verify that User A, B nd C can perform transfer]]>
+                <![CDATA["User A logins launches"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Verify launch"]]>
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of element located by By.id: kandy-login-view__username (tried for 60 second(s) with 500 milliseconds interval)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: kandy-login-view__username (tried for 60 second(s) with 500 milliseconds interval)
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+at utility.HookA.waitForElementVisibilityOfA(HookA.java:232)
+at utility.HookA.typeA(HookA.java:149)
+at stepdefinitions.mystepdefinitions_A.beforeScenarioA(mystepdefinitions_A.java:60)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at cucumber.runtime.Utils$1.call(Utils.java:26)
+at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+at cucumber.runtime.Utils.invoke(Utils.java:20)
+at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:65)
+at cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)
+at cucumber.runner.TestStep.executeStep(TestStep.java:65)
+at cucumber.runner.TestStep.run(TestStep.java:50)
+at cucumber.runner.TestCase.run(TestCase.java:42)
+at cucumber.runner.Runner.runPickle(Runner.java:50)
+at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:79)
+at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:24)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+at org.testng.TestNG.runSuites(TestNG.java:1032)
+at org.testng.TestNG.run(TestNG.java:1000)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"kandy-login-view__username"}
+  (Session info: chrome=69.0.3497.128)
+  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'NRD5CG7321YLY', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.37.544315 (730aa6a5fdba15..., userDataDir: D:\Users\myol\AppData\Local...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.128, webStorageEnabled: true, webdriver.remote.sessionid: 7e2b18e9ddd7dd1dc399ae7f41e...}
+Session ID: 7e2b18e9ddd7dd1dc399ae7f41e58885
+*** Element info: {Using=id, value=kandy-login-view__username}
+at sun.reflect.GeneratedConstructorAccessor16.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
+at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+at org.openqa.selenium.By$ById.findElement(By.java:188)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+... 46 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
             <line>
-              <![CDATA[Exiting the Application A!]]>
-            </line>
-            <line>
-              <![CDATA[Exiting the Application B!]]>
-            </line>
-            <line>
-              <![CDATA[Exiting the Application C!]]>
+              <![CDATA[Exited the Application A!]]>
             </line>
           </reporter-output>
-        </test-method> <!-- feature -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:runners.Call_Transfer_Actions_Test@5ec0a365]" name="tearDownClass" is-config="true" duration-ms="31" started-at="2019-01-22T07:43:59Z" finished-at="2019-01-22T07:43:59Z">
+        </test-method> <!-- runScenario -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:runners.Test_Test@78e67e0a]" name="tearDownClass" is-config="true" duration-ms="65" started-at="2019-10-07T15:39:29 EET" finished-at="2019-10-07T15:39:29 EET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- runners.Call_Transfer_Actions_Test -->
+      </class> <!-- runners.Test_Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

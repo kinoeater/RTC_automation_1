@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
+import io.cucumber.java.hu.De;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,13 +13,14 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.core.api.Scenario;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import utility.Constants;
 import utility.HookA;
 
 
@@ -37,13 +39,13 @@ public class mystepdefinitions_A extends HookA {
     }
     
     
-    @Before ("@UserA") 
+    @Before ("@UserA")
     public void beforeScenarioA(Scenario scenario) throws FileNotFoundException, InterruptedException, IOException, ParseException {
     	
     if (Adriver == null) {
     		
     		String ScenarioName= scenario.getName();
-    		System.out.println("Scenario Name that User A takes part in is : <"+ ScenarioName + ">");
+    		System.out.println("Scenario Name that User A takes part in is : <"+ ScenarioName +">");
     		
     		if (ScenarioName.contains("Login")) {
     		    
@@ -57,14 +59,9 @@ public class mystepdefinitions_A extends HookA {
     			System.out.println("Adriver is null, creating the driver!");
            	    System.out.println("Starting the Application A!");
     	    	RemoteLaunch_Client_A(); 	
-	    	   	typeA(selectors.getProperty("login.kandyusername"), selectors.getProperty("userA.kandy.name"));
-	    	   	typeA(selectors.getProperty("login.kandyauthname"), selectors.getProperty("userA.kandy.auth"));
-	    	   	typeA(selectors.getProperty("login.kandypassword"), selectors.getProperty("userA.kandy.pass"));
-	    	   	clickA(selectors.getProperty("login.kandysubmit"));         
-	    	   	typeA(selectors.getProperty("login.skypeusername"), selectors.getProperty("userA.skype.name"));
-	    	   	typeA(selectors.getProperty("login.skypepassword"), selectors.getProperty("userA.skype.pass"));
-	    	   	clickA(selectors.getProperty("login.skypesubmit")); 
-	    	   	clickA(selectors.getProperty("contacts.credentialssaveno"));
+	    	   	typeA(selectors.getProperty("user1.name"), selectors.getProperty("login.username.input"));
+	    	   	typeA(selectors.getProperty("user1.password"), selectors.getProperty("login.password.input"));
+	    	   	clickA(selectors.getProperty("login.submit.button"));
 	    	   	Thread.sleep(3000);
     		}
 	    		
@@ -115,9 +112,9 @@ public class mystepdefinitions_A extends HookA {
     
 	   @Given("^UserA test method$")
 	    public void usera_test_method() throws Throwable {
-	
-		  int video= Adriver.findElements(By.xpath("/*[starts-with(@id,'video-stream-id')]")).size();
-		  System.out.println("Video varsa burası en az 1 olmalı = "+video);
+    	   Thread.sleep(3000);
+		   String A=Adriver.findElement(By.xpath("//*[@id=\"kandy--login\"]/div[1]")).getText();
+		   System.out.println(A);
 		  
 		   
 	    }
@@ -218,6 +215,7 @@ public class mystepdefinitions_A extends HookA {
     @When("^UserA clicks \"([^\"]*)\"$")
     public void usera_clicks_something(String strArg1) throws Throwable {
     	clickA(selectors.getProperty(strArg1));
+
     }
 
     @Then("^UserA can see \"([^\"]*)\" on \"([^\"]*)\" location$")
@@ -225,23 +223,41 @@ public class mystepdefinitions_A extends HookA {
     	verifyA(strArg1,selectors.getProperty(strArg2));
     }
 
+	@Then("^UserA can verify \"([^\"]*)\" is present$")
+	public void usera_can_verify_something_is_present(String strArg1) throws Throwable {
+		verify_presence_A(strArg1);
+	}
        
     
     @And("^UserA enters \"([^\"]*)\" to \"([^\"]*)\"$")
     public void usera_enters_something_to_something(String strArg1, String strArg2) throws Throwable {
     	
-    	typeA(selectors.getProperty(strArg2), strArg1);
+    	typeA(selectors.getProperty(strArg1), selectors.getProperty(strArg2));
     }
 
-   
-
-
-    
     @And("^UserA waits for \"([^\"]*)\" seconds$")
     public void usera_waits_for_something_seconds(String strArg1) throws Throwable {
-        int sleeptime=Integer.parseInt(strArg1);
+    	String strArg2 = strArg1+"000";
+        int sleeptime=Integer.parseInt(strArg2);
     	Thread.sleep(sleeptime);
 
     }
+
+
+    @Given("^UserA launches$")
+    public void usera_launches() throws Throwable {
     
+
+
+		Thread.sleep(1000);
+		Adriver.findElement(By.xpath("//*[@id=\"kandy-login__input--username\"]")).sendKeys("1234");
+		Thread.sleep(1000);
+		Adriver.findElement(By.id("kandy-login__input--password")).sendKeys("1234");
+		Thread.sleep(1000);
+		Adriver.findElement(By.id("kandy-login__input--button--login")).click();
+
+		System.out.println("Das ist ersten arbeit");
+    }
+
+
 }

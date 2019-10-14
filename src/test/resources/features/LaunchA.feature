@@ -1,29 +1,16 @@
-@desktop @UserA @UserB
-Feature: Verify that User A can login successfully with correct credentials.	
+@desktop
+Feature: Login & Logout scenarios
+ User should be able to login with correct credentials
+ User should be warned if enters incorrect credentals.
 
-  Scenario: User A logins to S4B Web RTC with correct credentials and do not save the credentials
-    Given UserA logs into kandy with "011902165222512@172.28.247.41" "myol" "3456"
-      And UserA clicks "login.skypeskip"  
-     When UserA clicks "contacts.credentialssaveno"
-      And UserA waits for "3000" seconds
-      And UserA clicks "calls.dialbutton"
-      And UserA clicks "calls.dialpadinput"
-      And UserA waits for "2000" seconds
-      And UserA enters "3222001" to "calls.dialpadinput"
-      And UserA waits for "2000" seconds
-      And UserA clicks "calls.dialpadcallbutton"
-      And UserA waits for "6000" seconds
-       And UserA clicks "calls.callendbutton"
-       And UserA waits for "3000" seconds
-      And UserA clicks "settings.tab"
-      And UserA clicks "settings.tab"
-      And UserA clicks "settings.logoutbutton" 
-      And UserA clicks "settings.popuplogout"
-       And UserA waits for "3000" seconds
-      And UserA exits client
-      
-      
-      
-     # And UserA test method
- 
- 
+ @UserA
+ Scenario: Login: Use correct credentials
+  Given UserA enters "userA.name" to "login.username.input"
+  And UserA enters "userA.password" to "login.password.input"
+  When UserA clicks "login.submit.button"
+  And UserA waits for "5" seconds
+  Then UserA can see "dialpad" on "Home_Page.dialpad.button.text_element" location
+  And UserA clicks "Home_Page.avatar.button"
+  And UserA clicks "avatar.logout.button"
+  And UserA can see "Username" on "login.username.label" location
+  And UserA exits client

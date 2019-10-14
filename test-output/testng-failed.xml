@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="runners.Test_report_Test">
+      <class name="runners.Test_Test">
         <methods>
-          <include name="setUpClass"/>
-          <include name="teardown"/>
-          <include name="feature" invocation-numbers="2 5"/>
-          <include name="setup"/>
+          <include name="runScenario" invocation-numbers="0"/>
           <include name="tearDownClass"/>
+          <include name="setUpClass"/>
         </methods>
-      </class> <!-- runners.Test_report_Test -->
+      </class> <!-- runners.Test_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

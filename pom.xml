@@ -71,47 +71,78 @@
     <scope>test</scope>
 </dependency>
 
-    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
-    
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-jvm-deps</artifactId>
-            <version>1.0.5</version>
-        </dependency>
 
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>1.2.5</version>
-        </dependency>
+          <!-- CUCUMBER -->
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+
+<dependency>
+
+	<groupId>io.cucumber</groupId>
+
+	<artifactId>cucumber-java</artifactId>
+
+	<version>4.7.2</version>
+
+	<scope>test</scope>
+
+</dependency>
+
+     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm -->
+     <dependency>
+         <groupId>io.cucumber</groupId>
+         <artifactId>cucumber-jvm</artifactId>
+         <version>4.7.2</version>
+         <type>pom</type>
+     </dependency>
+
+<dependency>
+
+	<groupId>io.cucumber</groupId>
+
+	<artifactId>cucumber-testng</artifactId>
+
+	<version>4.7.2</version>
+
+	<scope>test</scope>
+
+	<exclusions>
+
+	<exclusion>
+
+	<groupId>junit</groupId>
+
+ 	<artifactId>junit</artifactId>
+
+	</exclusion>
+
+	</exclusions>
+</dependency>
+
+     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+     <dependency>
+         <groupId>io.cucumber</groupId>
+         <artifactId>cucumber-junit</artifactId>
+         <version>4.7.2</version>
+         <scope>test</scope>
+     </dependency>
+
+     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+     <dependency>
+         <groupId>io.cucumber</groupId>
+         <artifactId>cucumber-core</artifactId>
+         <version>4.7.2</version>
+     </dependency>
+
+     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+     <dependency>
+         <groupId>io.cucumber</groupId>
+         <artifactId>cucumber-picocontainer</artifactId>
+         <version>2.1.0</version>
+     </dependency>
         
         
-<dependency>
 
-<groupId>info.cukes</groupId>
 
-<artifactId>cucumber-junit</artifactId>
-
-<version>1.2.5</version>
-
-<scope>test</scope>
-
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-jvm -->
-<dependency>
-    <groupId>info.cukes</groupId>
-    <artifactId>cucumber-jvm</artifactId>
-    <version>1.2.5</version>
-    <type>pom</type>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-core -->
-<dependency>
-    <groupId>info.cukes</groupId>
-    <artifactId>cucumber-core</artifactId>
-    <version>1.2.5</version>
-</dependency>
        
         <dependency>
       <groupId>com.google.guava</groupId>
@@ -120,18 +151,7 @@
 </dependency>
 
         <!-- Below Dependency for TestNG -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>1.2.5</version>
-            <scope>compile</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -148,13 +168,6 @@
             <groupId>com.github.temyers</groupId>
             <artifactId>cucumber-jvm-parallel-plugin</artifactId>
             <version>5.0.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>1.2.4</version>
-            <scope>test</scope>
         </dependency>
 
 
