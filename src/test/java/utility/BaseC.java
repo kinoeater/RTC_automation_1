@@ -23,7 +23,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HookC {
+public class BaseC extends driver_factory {
 
 
     public static RemoteWebDriver Cdriver;

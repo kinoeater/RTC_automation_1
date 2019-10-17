@@ -6,6 +6,7 @@ Feature: Login & Logout scenarios
   @UserA
   Scenario: Login: Use correct credentials
     Given UserA enters "userA.name" to "login.username.input"
+    And UserA enters "userA.auth" to "login.auth.input"
     And UserA enters "userA.password" to "login.password.input"
     When UserA clicks "login.submit.button"
     And UserA waits for "5" seconds
@@ -18,6 +19,7 @@ Feature: Login & Logout scenarios
   @UserA
   Scenario: Login: Use correct credentials
     Given UserA enters "user.incorrect.name" to "login.username.input"
+    And UserA enters "userA.auth" to "login.auth.input"
     And UserA enters "userA.password" to "login.password.input"
     When UserA clicks "login.submit.button"
     Then UserA can see "Could not login due to incorrect user credentials. Please try again." on "incorrect.login.warning" location

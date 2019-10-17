@@ -2,15 +2,7 @@
 Feature: Verify that User A and B can perform basic video call.
 
   @UserA  @UserB
-  Scenario: Login: Use correct credentials
-    Given UserA enters "userA.name" to "login.username.input"
-    And UserA enters "userA.password" to "login.password.input"
-    When UserA clicks "login.submit.button"
-    And UserA waits for "2" seconds
-    Then UserA can see "dialpad" on "Home_Page.dialpad.button.text_element" location
-    Given UserB enters "userB.name" to "login.username.input"
-    And UserB enters "userB.password" to "login.password.input"
-    When UserB clicks "login.submit.button"
+  Scenario: Use correct credentials
     And UserB waits for "2" seconds
     Then UserB can see "dialpad" on "Home_Page.dialpad.button.text_element" location
     And UserA clicks "Home_Page.dialpad.button"

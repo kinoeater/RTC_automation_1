@@ -24,52 +24,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
-public class HookA {
-
-
-    public static RemoteWebDriver Adriver;
-
-  //  static Properties selectors = new Properties();
+public class BaseA extends driver_factory {
 
 
 
-	    public static void RemoteLaunch_Client_A() throws InterruptedException, FileNotFoundException, IOException, org.json.simple.parser.ParseException {
 
-         //   selectors.load(HookA.class.getResourceAsStream("selector.properties"));
-         //   System.out.println("That is path from selectors "+ selectors.getProperty("Path"));
-            String BinaryPath = Constants.BinaryPath;
-            String hubURL = Constants.hubURL;
-            System.setProperty(Constants.Driver_name, Constants.ChromeDriver_path);
-            ChromeOptions options = new ChromeOptions();
-            options.setBinary(BinaryPath);
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setBrowserName("chrome");
-            capabilities.setPlatform(Platform.WINDOWS);
-            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-            Adriver = new RemoteWebDriver(new URL(hubURL), options);
-            Thread.sleep(3000);
-
-
-            for (String hand : Adriver.getWindowHandles()) {
-                Adriver.switchTo().window(hand);
-            }
-
-            JavascriptExecutor js = (JavascriptExecutor) Adriver;
-            Thread.sleep(1000);
-            js.executeScript("require('electron').remote.BrowserWindow.getFocusedWindow().maximize();"); //maximize the window via JS
-
-            //  System.out.println(Adriver.getPageSource());
-
-            Thread.sleep(1000);
-
-
-        }
-
-    //-----Constructor remote driver----
-
-    public static WebDriver getAdriver() {
-        return Adriver;
-    }
 
 
     //-----Teardown method----	    
@@ -248,16 +207,7 @@ public class HookA {
 
 
 
-    // method that helps to take a screenshot
 
-    public static void screenshotA(String capture) throws IOException {
-
-        File file = ((TakesScreenshot) Adriver).getScreenshotAs(OutputType.FILE);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy__hh_mm_ss");
-        String ScreenShotFileName = dateFormat.format(new Date());
-        FileUtils.copyFile(file, new File("D:\\work\\S4B_automation\\test-output\\ScreenShot" + capture + "_" + ScreenShotFileName + ".jpg"));
-
-    }
 
 
     // method that helps to choose correct locator from the selectors.properties file
@@ -309,33 +259,16 @@ public class HookA {
 
 
 
-    public static void flashA(String sel) throws Throwable {
+    // method that helps to take a screenshot
 
-        JavascriptExecutor js = ((JavascriptExecutor) Adriver);
-        By by = getByA(sel);
-        WebElement element = Adriver.findElement(by);
-        String bgcolor = element.getCssValue("backgroundColor");
+    public static void screenshotA(String capture) throws IOException {
 
-        changeColorA("rgb(0,200,0)", element);
-
-        Thread.sleep(2000);
-        changeColorA(bgcolor, element);
-
-
+        File file = ((TakesScreenshot) Adriver).getScreenshotAs(OutputType.FILE);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy__hh_mm_ss");
+        String ScreenShotFileName = dateFormat.format(new Date());
+        FileUtils.copyFile(file, new File(Constants.Screenshot_folder + capture + "_" + ScreenShotFileName + ".jpg"));
 
     }
-
-    public static void changeColorA(String color, WebElement element) {
-        JavascriptExecutor js = ((JavascriptExecutor) Adriver);
-        js.executeAsyncScript("arguments[0].style.backgroundColor ='" + color + "'", element);
-
-        try {
-            Thread.sleep(20);
-        } catch (InterruptedException e) {
-
-        }
-    }
-
 
     // This method moves the files and sub-folders of previous test output under test-output folder
 

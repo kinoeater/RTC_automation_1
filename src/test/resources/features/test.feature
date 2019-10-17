@@ -54,7 +54,7 @@ Feature: Login & Logout scenarios
 #    And UserB can see "settings" on "Active_Call.call.transfer.button.text_element" location
 #    And UserA can see "call" on "Active_Call.call.merge.button.text_element" location
 #    And UserB can see "call" on "Active_Call.call.merge.button.text_element" location
-    ##################################################################################
+git
     And UserA can see "timer" on "Active_call.call.duration.text_element" location
     And UserB can see "pause" on "Active_call.call.duration.text_element" location
     And UserA can see "Mehmet Sirin USANMAZ" on "Active_call.participant.name" location

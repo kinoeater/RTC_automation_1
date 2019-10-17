@@ -1,14 +1,10 @@
 package stepdefinitions;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 import java.util.Properties;
 
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.Assert;
 import org.testng.Reporter;
 
 import io.cucumber.core.api.Scenario;
@@ -18,10 +14,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import utility.HookB;
+import utility.BaseB;
 
 
-public class mystepdefinitions_B extends HookB {
+public class mystepdefinitions_B extends BaseB {
 
 	
 	static Properties selectors = new Properties();
@@ -63,8 +59,9 @@ public class mystepdefinitions_B extends HookB {
                 System.out.println("Adriver is null, creating the driver!");
                 System.out.println("Starting the Application B!");
                 RemoteLaunch_Client_B();
-                typeB(selectors.getProperty("user1.name"), selectors.getProperty("login.username.input"));
-                typeB(selectors.getProperty("user1.password"), selectors.getProperty("login.password.input"));
+                typeB(selectors.getProperty("userA.name"), selectors.getProperty("login.username.input"));
+                typeB(selectors.getProperty("userB.auth"), selectors.getProperty("login.username.input"));
+                typeB(selectors.getProperty("userB.password"), selectors.getProperty("login.password.input"));
                 clickB(selectors.getProperty("login.submit.button"));
                 Thread.sleep(3000);
     		}
@@ -115,74 +112,9 @@ public class mystepdefinitions_B extends HookB {
     	
     	
     }
-  
-    
-    @And("^UserB choose \"([^\"]*)\" to send message$")
-    public void userb_choose_something_to_send_message(String strArg1) throws Throwable {
-        
-	// ******Method to choose the contact with name "strArg1"********************		   
-    List<WebElement> d= Bdriver.findElements(By.xpath("//*[@title='"+strArg1+"']"));
-	d.iterator().next().click();
-	   
-    }
 
-    @And("^UserB checks if the message from \"([^\"]*)\" received is \"([^\"]*)\"$")
-    public void userb_checks_if_the_message_from_something_received_is_something(String strArg1, String strArg2) throws Throwable {
-    	
-    	// ******Method to choose the contact with name "strArg2"********************	
-    	List<WebElement> k= Bdriver.findElements(By.xpath("//*[@title='"+strArg1+"']"));
-		k.iterator().next().click();
-		Thread.sleep(5000);
-    	
-		// ******Method to checek if the received message is same as "strArg1" ********************	
-		
-    	List<WebElement> d= Bdriver.findElements(By.xpath("//*[@class='text-message']/div[1]"));
-    	int y=d.size();
-		String message_received=d.get(y-1).getText();
-        Assert.assertEquals(message_received, strArg2);
-	    System.out.println("Message received successfully from "+strArg1);
-	    	
-    }
-    
-    
-    @And("^UserB opens \"([^\"]*)\"$")
-    public void userb_opens_something(String strArg1) throws Throwable {
-        Bdriver.get(strArg1);
-    }
 
-       
-    @Given("^UserB is launched$")
-    public void userb_is_launched() throws Throwable {
-    	  RemoteLaunch_Client_B();
-    	  System.out.println("Driver="+Bdriver);
-    	  System.out.println("Application B is started!");
-          Reporter.log("Application B is started!");
-      
-    
-    }
-    
-    
-    @Given("^UserB logs into kandy with \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
-    public void userb_logs_into_kandy_with_something_something_something(String strArg1, String strArg2, String strArg3) throws Throwable {
-       
-    	RemoteLaunch_Client_B();
-    	typeB(selectors.getProperty("login.kandyusername"), strArg1);
-    	typeB(selectors.getProperty("login.kandyauthname"), strArg2);
-    	typeB(selectors.getProperty("login.kandypassword"), strArg3);
-    	clickB(selectors.getProperty("login.kandysubmit"));
-    	    	
-    }
-    
- 
-    @And("^UserB logs into skype with \"([^\"]*)\" \"([^\"]*)\"$")
-    public void userb_logs_into_skype_with_something_something(String strArg1, String strArg2) throws Throwable {
-    
-      	typeB(selectors.getProperty("login.skypeusername"), strArg1);
-    	typeB(selectors.getProperty("login.skypepassword"), strArg2);
-    	clickB(selectors.getProperty("login.skypesubmit"));
-    	
-    }
-   
+
     @When("^UserB clicks \"([^\"]*)\"$")
     public void userb_clicks_something(String strArg1) throws Throwable {
     	
@@ -201,7 +133,7 @@ public class mystepdefinitions_B extends HookB {
     	verifyB(strArg1,selectors.getProperty(strArg2));
     }
 
-	public static By Kandyusername=By.id("username-kandy");
+
 	
     @And("^UserB enters \"([^\"]*)\" to \"([^\"]*)\"$")
     public void userb_enters_something_to_something(String strArg1, String strArg2) throws Throwable {
@@ -212,8 +144,10 @@ public class mystepdefinitions_B extends HookB {
 
     @And("^UserB waits for \"([^\"]*)\" seconds$")
     public void userb_waits_for_something_seconds(String strArg1) throws Throwable {
-        int sleeptime=Integer.parseInt(strArg1);
-    	Thread.sleep(sleeptime);
+
+        String strArg2 = strArg1+"000";
+        int sleeptime=Integer.parseInt(strArg2);
+        Thread.sleep(sleeptime);
 
     }
     

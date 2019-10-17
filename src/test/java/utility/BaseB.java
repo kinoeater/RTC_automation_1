@@ -23,50 +23,9 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HookB {
+public class BaseB extends driver_factory {
 
 
-    public static RemoteWebDriver Bdriver;
-
-
-
-
-    public static void RemoteLaunch_Client_B() throws InterruptedException, MalformedURLException {
-
-        String BinaryPath = Constants.BinaryPath;
-        String hubURL =Constants.hubURL;
-        System.setProperty(Constants.Driver_name, Constants.ChromeDriver_path);
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary(BinaryPath);
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setBrowserName("chrome");
-        capabilities.setPlatform(Platform.WINDOWS);
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-
-        Bdriver = new RemoteWebDriver(new URL(hubURL), options);
-
-        Thread.sleep(7000);
-
-
-        for (String hand: Bdriver.getWindowHandles()) {
-            Bdriver.switchTo().window(hand);
-        }
-
-
-        JavascriptExecutor js = (JavascriptExecutor) Bdriver;
-        Thread.sleep(1000);
-        js.executeScript("require('electron').remote.BrowserWindow.getFocusedWindow().maximize();"); //maximize the window via JS
-
-
-    }
-
-
-
-    //-----Constructor remote driver----
-
-    public static WebDriver getBdriver() {
-        return Bdriver;
-    }
 
 
     // method that helps to select on certain elements
@@ -166,7 +125,7 @@ public class HookB {
         File file = ((TakesScreenshot) Bdriver).getScreenshotAs(OutputType.FILE);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy__hh_mm_ss");
         String ScreenShotFileName = dateFormat.format(new Date());
-        FileUtils.copyFile(file, new File("D:\\work\\S4B_automation\\test-output\\ScreenShot" + capture + "_" + ScreenShotFileName + ".jpg"));
+        FileUtils.copyFile(file, new File(Constants.Screenshot_folder  + capture + "_" + ScreenShotFileName + ".jpg"));
 
     }
 
